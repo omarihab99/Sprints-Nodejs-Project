@@ -11,6 +11,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use('/category', categoryRoute);
 app.use('/product', productRoute);
+app.use('/user', userRoute);
 app.listen(PORT, () => {
     console.log(chalk.green(`Server running on port ${PORT}`));
 });

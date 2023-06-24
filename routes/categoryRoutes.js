@@ -1,4 +1,5 @@
 const express = require("express");
+const {verifyToken} = require("../services/auth");
 const { categoryValidation, putCategoryValidation } = require("../services/validation");
 const {
   getAllCategories,
@@ -9,11 +10,11 @@ const {
 } = require("../controllers/categoryController");
 const router = express.Router();
 router.get("/", getAllCategories);
-router.post("/", categoryValidation, createCategory);
+router.post("/",verifyToken, categoryValidation, createCategory);
 router
   .route("/:id")    
   .get(getCategoryById)
-  .put(putCategoryValidation, updateCategory)
-  .delete(deleteCategory);
+  .put(verifyToken, putCategoryValidation, updateCategory)
+  .delete(verifyToken, deleteCategory);
 
 module.exports = router;

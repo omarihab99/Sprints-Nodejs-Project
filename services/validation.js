@@ -98,7 +98,7 @@ const userRegister = (req, res, next) => {
     req.body = userSchema.parse(req.body);
     next();
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(400).json(JSON.parse(error.message));
   }
 };
 module.exports = {

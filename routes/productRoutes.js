@@ -1,4 +1,5 @@
 const express = require("express");
+const {verifyToken} = require("../services/auth");
 const {productValidation, putProductValidation} = require("../services/validation");
 const {
     getAllProducts,
@@ -9,11 +10,11 @@ const {
 } = require("../controllers/productController");
 const router = express.Router();
 router.get("/", getAllProducts);
-router.post("/", productValidation, createProduct);
+router.post("/",verifyToken, productValidation, createProduct);
 router
     .route("/:id")
     .get(getProductById)
-    .put(putProductValidation, updateProduct)
-    .delete(deleteProduct);
+    .put(verifyToken, putProductValidation, updateProduct)
+    .delete(verifyToken, deleteProduct);
 
 module.exports = router;
