@@ -27,4 +27,10 @@ productLogger = {
     deleteProductSuccess: () => console.log(chalk.green("Server: deleteProduct passed.")),
     deleteProductFailed: () => console.log(chalk.red("Server: deleteProduct failed.")),
 };
-module.exports = {categoryLogger, productLogger};
+userLogger = {
+  userRegisterSuccess: () => console.log(chalk.green('Server: userRegister success')),
+  userRegisterFailed: () => console.log(chalk.green('Server: userRegister failed')),
+  userLoginSuccess: () => console.log(chalk.green('Server: userLogin success')),
+  userLoginFailed: () => console.log(chalk.green('Server: userLogin failed')),
+};
+module.exports = {categoryLogger, productLogger, userLogger};
