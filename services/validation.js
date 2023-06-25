@@ -3,13 +3,13 @@ const logger = require("../logger");
 
 const productValidation = (req, res, next) => {
   try {
-    const productScema = zod.object({
+    const productSchema = zod.object({
       id: zod.number(),
       name: zod.string().min(3),
       price: zod.number(),
       category_id: zod.number(),
     });
-    req.body = productScema.parse(req.body);
+    req.body = productSchema.parse(req.body);
     next();
   } catch (error) {
     res.status(400).json(error.message);
@@ -17,12 +17,12 @@ const productValidation = (req, res, next) => {
 };
 const putProductValidation = (req, res, next) => {
   try {
-    const productScema = zod.object({
+    const productSchema = zod.object({
       name: zod.string().min(3),
       price: zod.number(),
       category_id: zod.number(),
     });
-    req.body = productScema.parse(req.body);
+    req.body = productSchema.parse(req.body);
     next();
   } catch (error) {
     res.status(400).json(error.message);
